@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<title>ErkinSites</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  text-align: center;
+}
+
+header {
+  padding: 25px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px auto;
+  width: 90%;
+  max-width: 500px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  margin: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.whatsapp { background: #25D366; }
+.game { background: orange; }
+
+.price-box {
+  background: rgba(0,0,0,0.25);
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>ErkinSites</h1>
+  <p>Modern Web Studio</p>
+</header>
+
+<!-- WhatsApp -->
+<a class="btn whatsapp" href="https://wa.me/77000000000" target="_blank">
+💬 WhatsApp
+</a>
+
+<!-- SERVICES -->
+<div class="card">
+  <h2>Қызметтер т.б</h2>
+  <p>✔ Сайт жасау</p>
+  <p>✔ Дизайн</p>
+  <p>✔ Онлайн дүкен</p>
+  <p>✔ Landing page</p>
+  <p>✔ Т.б басқа қызметтер</p>
+</div>
+
+<!-- PRICES -->
+<div class="card">
+  <h2>Бағалар</h2>
+
+  <div class="price-box">1 бет — 5 000₸</div>
+  <div class="price-box">5 бет — 15 000₸</div>
+  <div class="price-box">10 бет — 25 000₸</div>
+  <div class="price-box">10+ бет — 40 000₸</div>
+</div>
+
+<!-- MINI GAME -->
+<div class="card">
+  <h2>🎲 Сан ойын</h2>
+  <button class="btn game" onclick="guessGame()">Ойнау</button>
+</div>
+
+<!-- CLICKER GAME -->
+<div class="card">
+  <h2>🖱️ Clicker ойын</h2>
+  <p>10 секундта қанша рет баса аласың?</p>
+
+  <h1 id="score">0</h1>
+
+  <button class="btn game" onclick="startGame()">Бастау</button>
+  <button class="btn game" onclick="clickBtn()">БАС!</button>
+
+  <p id="time">Уақыт: 0</p>
+</div>
+
+<script>
+// GUESS GAME
+function guessGame(){
+  let num = Math.floor(Math.random()*5)+1;
+  let guess = prompt("1-5 сан тап:");
+
+  if(guess == num){
+    alert("🔥 Дұрыс!");
+  } else {
+    alert("❌ Қате! Дұрыс сан: " + num);
+  }
+}
+
+// CLICKER GAME
+let score = 0;
+let time = 10;
+let gameActive = false;
+let timer;
+
+function startGame(){
+  score = 0;
+  time = 10;
+  gameActive = true;
+
+  document.getElementById("score").innerText = score;
+  document.getElementById("time").innerText = "Уақыт: " + time;
+
+  clearInterval(timer);
+
+  timer = setInterval(() => {
+    time--;
+    document.getElementById("time").innerText = "Уақыт: " + time;
+
+    if(time <= 0){
+      clearInterval(timer);
+      gameActive = false;
+      alert("⏰ Уақыт бітті! Ұпай: " + score);
+    }
+  }, 1000);
+}
+
+function clickBtn(){
+  if(!gameActive) return;
+
+  score++;
+  document.getElementById("score").innerText = score;
+}
+</script>
+
+</body>
+</html>
