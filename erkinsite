@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <title>WebStudio</title>
+
+  <meta name="google-site-verification" content="2qXz7EsQ-ltPLz73f0X24xd5jyb-dKXs5gfiHIK4_Gc" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      background: #111827;
+      position: sticky;
+      top: 0;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #22c55e;
+    }
+
+    button {
+      margin-left: 5px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      background: #22c55e;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 90px 20px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+    }
+
+    .hero h1 {
+      font-size: 36px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #22c55e;
+      color: black;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      width: 250px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+    }
+    * мини игра */
+    .game {
+      margin-top: 5px;
+     }
+  </style>
+</head>
+
+<body onload="setLang('kz')">
+
+<header>
+  <div class="logo">WebStudio</div>
+
+  <div>
+    <button onclick="setLang('kz')">KZ</button>
+    <button onclick="setLang('ru')">RU</button>
+    <button onclick="setLang('en')">EN</button>
+  </div>
+</header>
+
+<div class="hero">
+  <h1 id="title">Сайт жасаймын 🔥</h1>
+  <p id="text">Бизнесіңізді интернетке шығарып, клиент тартуға көмектесемін</p>
+
+  <!-- ДҰРЫС НОМЕР -->
+  <a class="btn" id="btn" href="https://wa.me/77758866819" target="_blank">
+    Жазу
+  </a>
+</div>
+
+<div class="section">
+  <h2 id="servicesTitle">Қызметтер</h2>
+  <div class="cards">
+    <div class="card" id="s1">🌐 Сайт жасау</div>
+    <div class="card" id="s2">🎨 Дизайн</div>
+    <div class="card" id="s3">⚡ Жылдам сайт</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 id="priceTitle">Бағалар</h2>
+  <p>
+    Landing page — 15 000 ₸ - 25 000 ₸<br>
+    Бизнес сайт — 30 000 ₸ - 60 000 ₸<br>
+    Premium сайт — 70 000 ₸ - 150 000 ₸
+  </p>
+</div>
+
+<footer>
+  <p>© 2026 WebStudio</p>
+</footer>
+    <!-- 🎮 МИНИ ОЙЫН -->
+  <div class="game">
+  <h3>💰 Ақша жинау ойыны</h3>
+  <div id="money">0 ₸</div>
+  <button onclick="earn()">Тап</button>
+  </div>
+<script>
+const data = {
+  kz: {
+    title: "Сайт жасаймын 🔥",
+    text: "Бизнесіңізді интернетке шығарып, клиент тартуға көмектесемін",
+    btn: "Жазу",
+    servicesTitle: "Қызметтер",
+    s1: "🌐 Сайт жасау",
+    s2: "🎨 Дизайн",
+    s3: "⚡ Жылдам сайт",
+    priceTitle: "Бағалар"
+  },
+  ru: {
+    title: "Делаю сайты 🔥",
+    text: "Помогаю бизнесу выйти в интернет",
+    btn: "Написать",
+    servicesTitle: "Услуги",
+    s1: "🌐 Создание сайтов",
+    s2: "🎨 Дизайн",
+    s3: "⚡ Быстрые сайты",
+    priceTitle: "Цены"
+  },
+  en: {
+    title: "I build websites 🔥",
+    text: "Helping your business go online",
+    btn: "Contact",
+    servicesTitle: "Services",
+    s1: "🌐 Websites",
+    s2: "🎨 Design",
+    s3: "⚡ Fast sites",
+    priceTitle: "Prices"
+  }
+};
+
+function setLang(lang) {
+  document.getElementById("title").innerText = data[lang].title;
+  document.getElementById("text").innerText = data[lang].text;
+  document.getElementById("btn").innerText = data[lang].btn;
+
+  document.getElementById("servicesTitle").innerText = data[lang].servicesTitle;
+  document.getElementById("s1").innerText = data[lang].s1;
+  document.getElementById("s2").innerText = data[lang].s2;
+  document.getElementById("s3").innerText = data[lang].s3;
+
+  document.getElementById("priceTitle").innerText = data[lang].priceTitle;
+}
+</script>
+
+</body>
+</html>
